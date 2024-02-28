@@ -7,6 +7,20 @@ use App\Models\Expense;
 
 class ExpenseController extends Controller
 {
+      /**
+     * Display the specified expense with receipt.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        // Find the expense by ID
+        $expense = Expense::findOrFail($id);
+
+        // Return the expense details view with the expense data
+        return view('employee.show', compact('expense'));
+    }
     public function index()
     {
         $expenses = Expense::all();
@@ -28,7 +42,6 @@ class ExpenseController extends Controller
             'amount' => 'required|numeric',
             'date' => 'required|date',
             'description' => 'nullable|string',
-            'receipt' => 'nullable|string',
         ]);
 
         // Create a new expense record
@@ -38,7 +51,6 @@ class ExpenseController extends Controller
         $expense->amount = $validatedData['amount'];
         $expense->date = $validatedData['date'];
         $expense->description = $validatedData['description'];
-        $expense->receipt = $validatedData['receipt'];
         $expense->save();
 
         // Redirect back with success message

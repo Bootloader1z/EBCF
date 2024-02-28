@@ -26,7 +26,7 @@
           </li>
           <li>
             <a href="components-badges.html">
-              <i class="bi bi-circle"></i><span>Badges</span>
+              <span>Badges</span>
             </a>
           </li>
           <li>

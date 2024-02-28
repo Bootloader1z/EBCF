@@ -85,29 +85,33 @@
     <section class="section dashboard">
       <div class="row">
 
-       <!-- General Form Elements -->
-       <table class="table datatable">
-        <thead>
-            <tr>
-                <th><b>Category</b></th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Receipt</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($expenses as $expense)
-            <tr>
-                <td>{{ $expense->category }}</td>
-                <td>{{ $expense->amount }}</td>
-                <td>{{ $expense->date }}</td>
-                <td>{{ $expense->description }}</td>
-                <td>{{ $expense->receipt }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <!-- General Form Elements -->
+<table class="table datatable">
+    <thead>
+        <tr>
+            <th><b>Category</b></th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Action</th> <!-- Add a new column for the action button -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($expenses as $expense)
+        <tr>
+            <td>{{ $expense->category }}</td>
+            <td>{{ $expense->amount }}</td>
+            <td>{{ $expense->date }}</td>
+            <td>{{ $expense->description }}</td>
+            <td>
+                <a href="{{ route('expenses.show', ['id' => $expense->id]) }}" class="btn btn-primary">Show</a>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+
 
 
       </div>

@@ -50,6 +50,8 @@ Route::group(['middleware'=>['web','isEmployee']],function(){
     Route::get('/employee/expensedata', [ExpenseController::class, 'index'])->name('expense.index');
     Route::get('/employee/createexpense', [ExpenseController::class, 'create'])->name('expense.create');
     Route::post('/expenses', [ExpenseController::class, 'store'])->name('expense.store');
+    Route::get('/expenses/{id}',[ExpenseController::class,'show'])->name('expense.show');
+
 
 });
 
