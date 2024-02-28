@@ -7,12 +7,6 @@ use App\Models\Expense;
 
 class ExpenseController extends Controller
 {
-      /**
-     * Display the specified expense with receipt.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         // Find the expense by ID
