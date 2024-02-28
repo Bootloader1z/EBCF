@@ -15,7 +15,7 @@ class EmployeeAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user() && auth()->user()->role == 3){
+        if(auth()->user() && auth()->user()->role == 2){
             return $next($request);
         }
 

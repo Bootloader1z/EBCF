@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExpenseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,16 +41,18 @@ Route::group(['middleware'=>['web','isSuperAdmin']],function(){
 
 // ********** Sub Admin Routes *********
 Route::group(['middleware'=>['web','isSubAdmin']],function(){
-    Route::get('/dashboard',[SubAdminController::class,'dashboard']);
+    Route::get('/sub-admin/dashboard',[SubAdminController::class,'dashboard']);
 });
 
-// ********** Admin Routes *********
+// ********** Employee Routes *********
 Route::group(['middleware'=>['web','isEmployee']],function(){
-    Route::get('/dashboard',[EmployeeController::class,'dashboard']);
+    Route::get('/employee/dashboard',[EmployeeController::class,'dashboard']);
+    Route::post('/employee/expense', [ExpenseController::class, 'store'])->name('submit-expense');
+
 });
 
 // ********** User Routes *********
 Route::group(['middleware'=>['web','isUser']],function(){
-    Route::get('/dashboard',[UserController::class,'dashboard']);
+    Route::get('/User/dashboard',[UserController::class,'dashboard']);
 });
 
