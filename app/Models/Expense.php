@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Expense extends Model
 {
-    use HasFactory;
+
 
     protected $fillable = [
         'user_id',
@@ -16,7 +17,9 @@ class Expense extends Model
         'date',
         'description',
         'receipt',
+
     ];
+    use HasFactory;
 
     // Define relationships here if any
     public function user()

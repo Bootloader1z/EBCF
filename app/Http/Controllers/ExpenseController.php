@@ -7,6 +7,19 @@ use App\Models\Expense;
 
 class ExpenseController extends Controller
 {
+    public function index()
+    {
+        $expenses = Expense::all();
+        return view('employee.expensedata', compact('expenses'));
+    }
+
+    // Function to show the form for creating a new expense
+    public function create()
+    {
+        return view('employee.createexpense');
+    }
+
+    // Function to store the submitted form data in the database
     public function store(Request $request)
     {
         // Validate the form data
@@ -29,6 +42,8 @@ class ExpenseController extends Controller
         $expense->save();
 
         // Redirect back with success message
-        return redirect()->back()->with('success', 'Expense submitted successfully.');
+        return redirect()->route('expense.index')->with('success', 'Expense submitted successfully.');
+
     }
+
 }

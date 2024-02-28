@@ -15,13 +15,13 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/employee/expense">
+            <a href="{{ route('expense.create') }}">
               <span>Create Expense</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
+            <a href="{{ route('expense.index') }}">
+              <span>Expense Data</span>
             </a>
           </li>
           <li>

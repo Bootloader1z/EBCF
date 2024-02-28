@@ -73,11 +73,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Expense</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item"><a href="employee.dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Create Expenses</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -86,36 +86,61 @@
       <div class="row">
 
        <!-- General Form Elements -->
-<form action="{{ route('submit-expense') }}" method="post" enctype="multipart/form-data">
+       <form action="{{ route('expense.store') }}" method="post" enctype="multipart/form-data">
     @csrf <!-- CSRF Token -->
     <div class="row mb-3">
         <label for="category" class="col-sm-2 col-form-label">Category</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="category" name="category">
+            @error('category')
+            <span class="invalid-feedback" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
         </div>
     </div>
     <div class="row mb-3">
         <label for="amount" class="col-sm-2 col-form-label">Amount</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="amount" name="amount">
+            <input type="text" class="form-control" id="amount" name="amount">
+            @error('amount')
+            <span class="invalid-feedback" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
         </div>
     </div>
     <div class="row mb-3">
         <label for="date" class="col-sm-2 col-form-label">Date</label>
         <div class="col-sm-10">
             <input type="date" class="form-control" id="date" name="date">
+            @error('date')
+            <span class="invalid-feedback" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
         </div>
     </div>
     <div class="row mb-3">
         <label for="description" class="col-sm-2 col-form-label">Description</label>
         <div class="col-sm-10">
             <textarea class="form-control" id="description" name="description" style="height: 100px"></textarea>
+            @error('description')
+            <span class="invalid-feedback" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
         </div>
     </div>
     <div class="row mb-3">
         <label for="receipt" class="col-sm-2 col-form-label">Receipt</label>
         <div class="col-sm-10">
             <input type="file" class="form-control" id="receipt" name="receipt">
+            @error('receipt')
+            <span class="invalid-feedback" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
         </div>
     </div>
     <div class="row mb-3">

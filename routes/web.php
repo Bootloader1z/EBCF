@@ -47,7 +47,9 @@ Route::group(['middleware'=>['web','isSubAdmin']],function(){
 // ********** Employee Routes *********
 Route::group(['middleware'=>['web','isEmployee']],function(){
     Route::get('/employee/dashboard',[EmployeeController::class,'dashboard']);
-    Route::post('/employee/expense', [ExpenseController::class, 'store'])->name('submit-expense');
+    Route::get('/employee/expensedata', [ExpenseController::class, 'index'])->name('expense.index');
+    Route::get('/employee/createexpense', [ExpenseController::class, 'create'])->name('expense.create');
+    Route::post('/expenses', [ExpenseController::class, 'store'])->name('expense.store');
 
 });
 
