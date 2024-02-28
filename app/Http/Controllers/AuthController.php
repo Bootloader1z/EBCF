@@ -23,12 +23,14 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'string|required|min:2',
+            'username' => 'string|required|min:2',
             'email' => 'string|email|required|max:100|unique:users',
             'password' =>'string|required|confirmed|min:6'
         ]);
 
         $user = new User;
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -71,12 +73,6 @@ class AuthController extends Controller
         }
     }
 
-    public function loadDashboard()
-    {
-        return view('user.dashboard');
-    }
-
-
     public function redirectDash()
     {
         $redirect = '';
@@ -103,4 +99,9 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    public function loadDashboard()
+    {
+        return view('user.dashboard');
+    }
+
 }

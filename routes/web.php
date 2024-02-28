@@ -22,30 +22,29 @@ Route::get('/', function () {
 });
 Route::get('/register',[AuthController::class,'loadRegister']);
 Route::post('/register',[AuthController::class,'register'])->name('register');
-Route::get('/login',function(){
-    return redirect('/');
-});
+
 Route::get('/',[AuthController::class,'loadIndex']);
 Route::get('/login',[AuthController::class,'loadLogin']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::get('/logout',[AuthController::class,'logout']);
 
 // ********** Super Admin Routes *********
-Route::group(['prefix' => 'super-admin','middleware'=>['web','isSuperAdmin']],function(){
+Route::group(['middleware'=>['web','isSuperAdmin']],function(){
     Route::get('/dashboard',[SuperAdminController::class,'dashboard']);
 
     Route::get('/users',[SuperAdminController::class,'users'])->name('superAdminUsers');
     Route::get('/manage-role',[SuperAdminController::class,'manageRole'])->name('manageRole');
     Route::post('/update-role',[SuperAdminController::class,'updateRole'])->name('updateRole');
+
 });
 
 // ********** Sub Admin Routes *********
-Route::group(['prefix' => 'sub-admin','middleware'=>['web','isSubAdmin']],function(){
+Route::group(['middleware'=>['web','isSubAdmin']],function(){
     Route::get('/dashboard',[SubAdminController::class,'dashboard']);
 });
 
 // ********** Admin Routes *********
-Route::group(['prefix' => 'Employee','middleware'=>['web','isEmployee']],function(){
+Route::group(['middleware'=>['web','isEmployee']],function(){
     Route::get('/dashboard',[EmployeeController::class,'dashboard']);
 });
 
